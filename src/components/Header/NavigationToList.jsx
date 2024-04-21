@@ -22,7 +22,7 @@ export default function NavigationToList({ name, position, url, subMenu }) {
     );
   } else {
     content = (
-      <li><Link className="nav-link scrollto" to={{url}}>{name}</Link></li>  
+      <li><Link className="nav-link scrollto" to={url}>{name}</Link></li>  
     )
   }
 
