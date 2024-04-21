@@ -1,0 +1,28 @@
+.navbar-brand-logo{
+  float: left;
+    position: relative;
+    margin-left: 5px;
+    margin-top: 8px;
+    height: 57px;
+    width: 218px;
+    background-image: url(https://alligator.te.ua/images/logo-new.png);
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.elementor-8{
+  background-image: url(https://alligator.te.ua/aligator.org.ua/userfiles/image/%D0%9F%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0_%D0%B0%D0%BA%D0%B2%D0%B0%D0%BF%D0%B0%D1%80%D0%BA%20-%20%D0%B4%D0%BE%202%20%D0%BC%D0%B1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    max-width: 1200px;
+    min-height: 500px;
+}
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
