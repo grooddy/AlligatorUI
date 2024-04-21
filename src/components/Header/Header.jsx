@@ -13,7 +13,7 @@ export default function Header() {
                     <h1 className="logo me-auto"><a href="/">ALLIGATOR</a></h1>
                     {//<a href="index.html" className="logo me-auto "><div className='navbar-brand-logo'></div></a>
                     }
-                    <NavigationSection />
+                    <NavigationSection />       
                 </div>
             </header>
         </>

@@ -5,7 +5,7 @@ const NavigationList = () => {
 
 
   useEffect(() => {
-    fetch('https://alligator.onrender.com/menu/sidebar', {
+    fetch('https://alligator-api.onrender.com/menu', {
       method: 'GET'
     })
       .then(response => response.json())

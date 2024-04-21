@@ -17,7 +17,7 @@ export default function NewsCard({ data }) {
                 return <>
                 
                     <Grid item xs={12} ms={4} sm={4} key={idx}>
-                        <Card sx={{ maxWidth: 345 }} style={{padding: "10px",marginBottom:"20px"}}>
+                        <Card sx={{ maxWidth: 345, height: "100%" }} style={{padding: "10px",marginBottom:"20px"}}>
                             <CardHeader
                                 subheader={item.date}
                             />
