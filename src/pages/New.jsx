@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from "../components/Header/Header"
-import { news } from "../ExampleDataFiles/NewsData.json"
+import NewsDataService from '../api/NewsDataService';
 
 
 export default function New() {
-
+    const [newsItem, setNewsItem] = useState(null);
     const { id } = useParams();
-    const newsData = news.find(item => item.id === parseInt(id));
-    if (!newsData) {
+
+    useEffect(() => {
+        const fetchNews = async () => {
+          try {
+            const data = await NewsDataService.fetchNewsById(id);
+            setNewsItem(data);
+          } catch (error) {
+            console.error('Error fetching news:', error);
+          }
+        };
+    
+        fetchNews();
+      }, [id]);
+
+    if (!newsItem) {
         return <>
-        <Header />
         <div className="container">
                     <div className="section-title">
                         <h2>Новини не існує</h2>
@@ -21,21 +32,20 @@ export default function New() {
 
     return (
         <>
-            <Header />
             <div className="container">
 
                 <div className="section-title">
-                    <h2>{newsData.title}</h2>
-                    <p>{newsData.date}</p>
+                    <h2>{newsItem.title}</h2>
+                    <p>{newsItem.date}</p>
                 </div>
                 <div className='row'>
                     <div className="col-lg-6 order-1 order-lg-2">
-                        <img src={newsData.src} alt={newsData.src} key={newsData.id} className="img-fluid" />
+                        <img src={"https://alligator-api.onrender.com/" + newsItem.src} alt={newsItem.src} key={newsItem.id} className="img-fluid" />
                     </div>
                     <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                        <h3>{newsData.description}</h3>
+                        <h3>{newsItem.description}</h3>
                         <p className="fst-italic">
-                            {newsData.text}
+                        {newsItem.description}
                         </p>
                         <ul>
                             <li><i className="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>

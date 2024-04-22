@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import NavigationList from '../../ExampleDataFiles/NavigationList'
+import NavigationList from '../../api/NavigationListService'
 import NavigationToList from './NavigationToList'
 import { Link } from 'react-router-dom';
 

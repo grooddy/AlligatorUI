@@ -1,5 +1,44 @@
-{
-    "news": [
+// NewsDataService.js
+const NewsDataService = {
+  fetchData: function(url) {
+      return fetch(url, {
+          method: 'GET'
+      })
+          .then(response => response.json())
+          .catch(error => {
+              console.error('Error fetching data:', error);
+              return []; // Возвращаем пустой массив в случае ошибки
+          });
+  },
+
+  fetchAllNewsPagination: function(page, pageSize) {
+      const params = new URLSearchParams();
+      params.append('page', page);
+      params.append('pageSize', pageSize);
+      const apiUrl = `https://alligator-api.onrender.com/api/news?${params.toString()}`;
+      return this.fetchData(apiUrl);
+  },
+
+  fetchAllNews: async function() {
+      try {
+          const data = await this.fetchData('https://alligator-api.onrender.com/api/news');
+          return data;
+      } catch (error) {
+          console.error('Error fetching news:', error);
+          throw error;
+      }
+  },
+
+  fetchNewsById: function(id) {
+      const apiUrl = `https://alligator-api.onrender.com/api/news/${id}`;
+      return this.fetchData(apiUrl);
+  }
+};
+
+export default NewsDataService;
+
+/*
+    [
         {
             "id": 0,
             "date": "2024-06-03 10:32",
@@ -33,4 +72,4 @@
             "text": "extended lorem ipsum loremwqwqwe qweqew ewqwe w qe  wqewqew qewt  yeyrerert rrrrwr ewre wreewr"
         }
     ]
-}
+*/

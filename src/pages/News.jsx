@@ -1,7 +1,5 @@
-import Header from "../components/Header/Header"
-import * as React from 'react';
-import { news } from "../ExampleDataFiles/NewsData.json"
-import Footer from "../components/Footer";
+import React, { useState, useEffect } from 'react';
+import  NewsDataService  from "../api/NewsDataService"
 import NewsCard from "../components/NewsCard";
 
 import { Grid } from "@mui/material"
@@ -11,20 +9,34 @@ import Typography from '@mui/material/Typography';
 
 
 const News = () => {
+
+    const [newsItems, setNewsItems] = useState(null);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const data = await NewsDataService.fetchAllNews();
+                setNewsItems(data);
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        };
+
+        fetchNews();
+    }, []);
+    
+
     return (
         <>
-            <Header />
-
             <Container>
                 <Typography variant="h4" align="center" style={{marginTop:"50px"}}>
                     NEWS
                 </Typography>
                 <Grid container spacing={5} justifyContent="center" style={{marginTop:"20px"}}>
-                    <NewsCard data={news}/>
-                </Grid>
-            
+                {newsItems && <NewsCard data={newsItems} />}
+                   
+                </Grid>            
             </Container>
-             <Footer />
         </>
 
     );
